@@ -180,14 +180,25 @@ into the {body} of the default.hbs template --}}
             </div>
           </div>
         {{/if}}
-        {{!-- Third-party comments --}}
-        {{!--
           <section class="m-comments">
             <div class="l-wrapper in-comments js-third-party-comments">
-              <!-- Paste here the provided code snippet -->
+              <script defer src="{{asset "js/post.js"}}"></script>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+    this.page.url = adzikpisze.pl;
+    this.page.identifier = "ghost-{{post.comment_id}}";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://EXAMPLE.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </div>
           </section>
-        --}}
       {{/post}}
       {{!-- Related posts --}}
       {{#if post.tags.length}}
@@ -221,19 +232,5 @@ into the {body} of the default.hbs template --}}
 
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}
-  <script defer src="{{asset "js/post.js"}}"></script>
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-    this.page.url = adzikpisze.pl;
-    this.page.identifier = "ghost-{{comment_id}}";
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = 'https://EXAMPLE.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 {{/contentFor}}
