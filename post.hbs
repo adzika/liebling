@@ -224,10 +224,9 @@ into the {body} of the default.hbs template --}}
   <script defer src="{{asset "js/post.js"}}"></script>
   <div id="disqus_thread"></div>
   <script>
-
     var disqus_config = function () {
     this.page.url = adzikpisze.pl;
-    this.page.identifier = PAGE_IDENTIFIER;
+    this.page.identifier = "ghost-{{comment_id}}";
     };
     (function() { // DON'T EDIT BELOW THIS LINE
       var d = document, s = d.createElement('script');
